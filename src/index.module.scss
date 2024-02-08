@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: lightgrey;
+}
+
+h3 {
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+ul {
+  padding: 0;
+}
+/*
+
+span {
+	position: relative;
+	pointer-events: none;
+}
+
+.item-wrapper {
+	width: 535px;
+}
+
+
+.title {
+	font-size: 20px;
+	width: 100%;
+	margin: 0 8px 0 16px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+.completed-task {
+	text-decoration-line: line-through;
+}
+
+.btn-wrapper {
+	display: flex;
+	padding: 4px;
+}
+
+.edit_modal {
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 1;
+	pointer-events: all;
+	transition: 0.5s;
+	z-index: 3;
+}
+
+.edit_modal-content {
+	padding: 20px;
+	border-radius: 12px;
+	background-color: white;
+}
+
+input[type='checkbox'] {
+	accent-color: gray;
+}
+
+.edit_modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 20px;
+}
+
+.edit_modal-title {
+	font-size: 36px;
+	font-weight: 500;
+}
+.edit_modal_main-title {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.edit_modal-input {
+	max-width: 400px;
+	padding: 15px;
+	font-size: 24px;
+	border-radius: 10px;
+}
+
+.edit_modal-btn {
+	padding: 15px 40px;
+	margin: 20px 5px 5px 5px;
+	font-size: 20px;
+	background-color: #fff;
+	border: 0;
+	outline: 0;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: center;
+}
+
+@media (max-width: 610px) {
+	.container {
+		padding: 8px;
+	}
+	.form {
+		flex-direction: column;
+		margin: 0 auto;
+		align-items: center;
+	}
+	.header {
+		padding: 8px;
+	}
+	.input {
+		width: 86%;
+		border-radius: 8px;
+		margin: 20px;
+	}
+
+	.add-btn {
+		width: 92%;
+		border-radius: 8px;
+		margin: 0 auto;
+	}
+
+	.edit_modal-content {
+		padding: 8px;
+		width: 90%;
+	}
+	.edit_modal-header {
+		padding-bottom: 10px;
+	}
+	.edit_modal-title {
+		font-style: 30px;
+	}
+	.edit_modal-input {
+		padding: 4px;
+		font-size: 24px;
+		width: 90%;
+	}
+	.edit_modal-btn {
+		padding: 10px 30px;
+		font-size: 16px;
+		margin: 5px;
+		flex: 1;
+	}
+} */
