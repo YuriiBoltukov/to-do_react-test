@@ -8,3 +8,7 @@ export interface ITodo {
   date?: string;
   complete: boolean;
 }
+
+export interface ITodoState {
+  todos: ITodo[]
+}

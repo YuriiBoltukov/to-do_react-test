@@ -14,7 +14,7 @@ export default function EditTodo() {
   // Get todo from Redux store
   const dispatch = useDispatch();
 
-  const todo = useSelector((state) => {
+  const todo = useSelector((state: any) => {
       const { todos } = state.todos.todos
       return todos.find((todo: ITodo) => todo?.id === id)
     }

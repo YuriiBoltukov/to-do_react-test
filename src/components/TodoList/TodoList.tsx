@@ -11,7 +11,7 @@ const TodoList: React.FC = () => {
    * for getting todos selector from state
    */
   const { todos } = useSelector(
-    (state: { todos }) => state.todos
+    (state: { todos: any }) => state.todos
   );
 
   useEffect(() => {
