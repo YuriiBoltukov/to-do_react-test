@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import style from 'todoView.module.scss';
+import style from './todoview.module.scss';
 import {  ITodo } from '../../models/data.ts';
 interface TodoViewProps {
   todos: ITodo
