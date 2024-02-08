@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector }   from 'react-redux';
 import { TodoItem }                 from '../TodoItem/TodoItem';
-import { ITodoRes, ITodoState } from '../../models/data.ts';
 import { setTodos }                   from '../../store/reducers/todoSlice.ts';
+import { ITodo }                      from '../../models/data.ts';
 
 const TodoList: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -10,8 +10,8 @@ const TodoList: React.FC = () => {
   /**
    * for getting todos selector from state
    */
-  const { todos }: ITodoState = useSelector(
-    (state: { todos: ITodoState }) => state.todos
+  const { todos } = useSelector(
+    (state: { todos }) => state.todos
   );
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const TodoList: React.FC = () => {
 
   return (
     <div className='item-wrapper'>
-      {todos?.map((todo: ITodoRes) => (
+      {todos?.map((todo: ITodo) => (
         <TodoItem key={todo.id} {...todo} />
       ))}
     </div>
