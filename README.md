@@ -1,3 +1,10 @@
+# For start this app you could: 
+ - clone this repository (git clone https://github.com/YuriiBoltukov/to-do_react-test.git)
+ - install dependencies (npm install)
+ - start fake server json-server --watch db.json --port 3001 (if you don't install run this command: npm install -g json-server)
+ - start project (npm run dev)
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
