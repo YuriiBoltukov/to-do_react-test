@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import  { useState } from 'react';
+import { useDispatch }     from 'react-redux';
 import { removeTodo, toggleTodoComplete } from '../../store/reducers/todoSlice';
 import style from './todoItem.module.scss';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { ITodo} from "../../models/data.ts";
 export const TodoItem = (props: ITodo) => {
   const dispatch = useDispatch();
   const [openDescription, setOpenDescription] = useState(false);
-
+  console.log(props)
   /**
    * for opening todo description
    */
@@ -19,9 +19,9 @@ export const TodoItem = (props: ITodo) => {
 
   /**
    * for changing complete status
-   * @param {string} id
    */
-  function completeTodo(id: string) {
+  function completeTodo(id:string) {
+    console.log(id)
     dispatch(toggleTodoComplete(id));
   }
 
@@ -49,7 +49,7 @@ export const TodoItem = (props: ITodo) => {
           className={style.todo_check_checkbox}
           type='checkbox'
           checked={props.complete}
-          onChange={() => completeTodo(props?.id)}
+          onChange={() => completeTodo(props.id)}
         />
         <p className={style.todo_check_date}>{props.date}</p>
       </div>

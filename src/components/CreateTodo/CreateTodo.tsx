@@ -3,19 +3,22 @@ import { useDispatch } from 'react-redux';
 import { ITodo } from '../../models/data';
 import { addTodo } from '../../store/reducers/todoSlice';
 import style from './createTodo.module.scss';
+import { nanoid } from 'nanoid';
 
 export const CreateTodo = () => {
   const dispatch = useDispatch();
 
   const inputRef = useRef<HTMLFormElement>(null);
 
-  const [form, setForm] = useState<ITodo>({
-    id: '',
+  const initialFormState = ():ITodo => ({
+    id: nanoid(),
     title: '',
     description: '',
     date: '',
     complete: false,
   });
+
+  const [form, setForm] = useState<ITodo>(initialFormState);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,14 +35,9 @@ export const CreateTodo = () => {
     } catch(error) {
       console.error('Ошибка при добавлении задачи:', error)
     }
+    console.log(form)
     validateForm();
-    setForm({
-      id: '',
-      title: '',
-      description: '',
-      date: '',
-      complete: false,
-    });
+    setForm(initialFormState);
     window.history.back();
   };
 

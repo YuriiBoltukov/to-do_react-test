@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
 import { ITodo,} from '../../models/data';
 export interface State {
   todos: ITodo[]
@@ -15,7 +14,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo(state, action: PayloadAction<ITodo>) {
       state.todos.push({
-        id: nanoid().slice(4),
+        id: action.payload.id,
         title: action.payload.title,
         description: action.payload.description,
         date: action.payload.date,
