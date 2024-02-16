@@ -1,16 +1,26 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { ITodo } from '../../models/data';
 import { addTodo } from '../../store/reducers/todoSlice';
 import style from './createTodo.module.scss';
 import { nanoid } from 'nanoid';
 
-export const CreateTodo = () => {
+// Interface for form state
+interface FormState {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  complete: boolean;
+}
+
+// Component for creating todo
+export const CreateTodo: React.FC = () => {
   const dispatch = useDispatch();
 
   const inputRef = useRef<HTMLFormElement>(null);
 
-  const initialFormState = ():ITodo => ({
+  // Initialize initial form state
+  const initialFormState = (): FormState => ({
     id: nanoid(),
     title: '',
     description: '',
@@ -18,9 +28,11 @@ export const CreateTodo = () => {
     complete: false,
   });
 
-  const [form, setForm] = useState<ITodo>(initialFormState);
+  // Form state
+  const [form, setForm] = useState<FormState>(initialFormState);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Submit form handler
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:3001/todos', {
@@ -30,28 +42,30 @@ export const CreateTodo = () => {
         },
         body: JSON.stringify(form),
       });
-      const data = await response.json();
-      dispatch(addTodo(data))
-    } catch(error) {
-      console.error('Ошибка при добавлении задачи:', error)
+      const data: FormState = await response.json();
+      dispatch(addTodo(data));
+    } catch (error) {
+      console.error('Error adding todo:', error);
     }
-    console.log(form)
+    console.log(form);
     validateForm();
     setForm(initialFormState);
     window.history.back();
   };
 
+  // Handle form field changes
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    key: string
+    event: ChangeEvent<HTMLInputElement>,
+    key: keyof FormState
   ) => {
     event.preventDefault();
     setForm({ ...form, [key]: event.target.value });
   };
 
+  // Form validation
   const validateForm = () => {
     const inputElements = Array.from(document.querySelectorAll('input'));
-    inputElements.forEach((input) => {
+    inputElements.forEach((input: HTMLInputElement) => {
       if (!input.checkValidity()) {
         input.setAttribute('aria-invalid', 'true');
       } else {

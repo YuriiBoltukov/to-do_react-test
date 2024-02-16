@@ -1,33 +1,33 @@
-import  { useState } from 'react';
-import { useDispatch }     from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { removeTodo, toggleTodoComplete } from '../../store/reducers/todoSlice';
 import style from './todoItem.module.scss';
 import { Link } from 'react-router-dom';
 import { TodoView } from '../TodoView/TodoView';
-import { ITodo} from "../../models/data.ts";
+import { ITodo } from "../../models/data";
 
-export const TodoItem = (props: ITodo) => {
+interface TodoItemProps extends ITodo {}
+
+export const TodoItem: React.FC<TodoItemProps> = (props) => {
   const dispatch = useDispatch();
-  const [openDescription, setOpenDescription] = useState(false);
-  console.log(props)
+  const [openDescription, setOpenDescription] = useState<boolean>(false);
+
   /**
-   * for opening todo description
+   * Toggles the description view
    */
   function handleOpenDescription() {
     setOpenDescription(!openDescription);
   }
 
   /**
-   * for changing complete status
+   * Handles marking a todo as complete
    */
-  function completeTodo(id:string) {
-    console.log(id)
-    dispatch(toggleTodoComplete(id));
+  function completeTodo() {
+    dispatch(toggleTodoComplete(props.id));
   }
 
   /**
-   * for removing todo
-   * @param {string} id
+   * Handles removing a todo
    */
   async function remove(id: string) {
     try {
@@ -37,7 +37,7 @@ export const TodoItem = (props: ITodo) => {
 
       dispatch(removeTodo(id));
     } catch (error) {
-      console.error('Ошибка при удалении задачи:', error);
+      console.error('Error removing todo:', error);
     }
   }
 
@@ -49,7 +49,7 @@ export const TodoItem = (props: ITodo) => {
           className={style.todo_check_checkbox}
           type='checkbox'
           checked={props.complete}
-          onChange={() => completeTodo(props.id)}
+          onChange={completeTodo}
         />
         <p className={style.todo_check_date}>{props.date}</p>
       </div>
@@ -64,15 +64,13 @@ export const TodoItem = (props: ITodo) => {
         </div>
       </div>
       <div className={style.todo_btn}>
-        <button onClick={() => handleOpenDescription()}>Viewing</button>
+        <button onClick={handleOpenDescription}>View</button>
         <Link to={`/update/${props.id}`}>
           <button>Edit</button>
         </Link>
         <button onClick={() => remove(props.id)}>Remove</button>
       </div>
-      {openDescription ? (
-        <TodoView todos={props} handleOpen={handleOpenDescription} />
-      ) : null}
+      {openDescription && <TodoView todos={props} handleOpen={handleOpenDescription} />}
     </div>
   );
 };
